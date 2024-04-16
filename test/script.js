@@ -77,10 +77,10 @@ function itemVanish() {
     for (let i = 0; i < item.length; i++) { // 아이템의 총 갯수만큼 반복
 
     // 캐릭터와 아이템이 맞닿으면 
-    if (parseInt(character.offsetLeft) < parseInt(item[i].offsetLeft) + parseInt(item[i].offsetWidth)
-    && parseInt(item[i].offsetLeft) < parseInt(character.offsetLeft) + parseInt(character.offsetWidth)
-    && parseInt(character.offsetTop) < parseInt(item[i].offsetTop) + parseInt(item[i].offsetHeight)
-    && parseInt(item[i].offsetTop) < parseInt(character.offsetTop) + parseInt(character.offsetHeight)) {
+    if (parseInt(character.offsetLeft) < parseInt(item[i].offsetLeft) + parseInt(item[i].offsetWidth) // 캐릭터는 아이템을 지나치면 안됨
+    && parseInt(item[i].offsetLeft) < parseInt(character.offsetLeft) + parseInt(character.offsetWidth) // 아이템의 왼쪽 부분이 캐릭터의 오른쪽 부분과 조금이라도 닿아야 함  
+    && parseInt(character.offsetTop) < parseInt(item[i].offsetTop) + parseInt(item[i].offsetHeight) // 캐릭터의 머리 부분이 아이템의 밑부분과 조금이라도 닿아야 함 
+    && parseInt(item[i].offsetTop) < parseInt(character.offsetTop) + parseInt(character.offsetHeight)) { // 아이템은 캐릭터보다 밑에 있으면 안됨
         item[i].style.display = 'none'; // 각 아이템을 사라지게 함
         let itemData = parseInt(item[i].textContent); // 각 아이템의 텍스트값을 하나씩 저장할 변수를 선언
         point += itemData; // 각 아이템의 텍스트값을 'point' 변수에 하나씩 합산함
